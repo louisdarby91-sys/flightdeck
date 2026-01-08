@@ -1,28 +1,22 @@
 const TOTAL_CARDS = 30;
 
-// Load completed cards
-let completed = JSON.parse(localStorage.getItem("completedCards")) || [];
+// Get completed cards from localStorage
+let completedCards = JSON.parse(localStorage.getItem("completedCards")) || [];
 
-// Check if this visit includes a card scan
+// Read card number from URL
 const params = new URLSearchParams(window.location.search);
-const card = parseInt(params.get("card"));
+const cardNumber = params.get("card");
 
-if (card && card >= 1 && card <= TOTAL_CARDS) {
-  if (!completed.includes(card)) {
-    completed.push(card);
-    localStorage.setItem("completedCards", JSON.stringify(completed));
-  }
+if (cardNumber && !completedCards.includes(cardNumber)) {
+  completedCards.push(cardNumber);
+  localStorage.setItem("completedCards", JSON.stringify(completedCards));
 }
 
-// Update progress UI
-const count = completed.length;
-const percent = Math.min((count / TOTAL_CARDS) * 100, 100);
+// Update UI
+const progressText = document.getElementById("progress-text");
+const progressBar = document.getElementById("progress-bar");
 
-document.getElementById("progress-bar").style.width = percent + "%";
-document.getElementById("progress-text").innerText =
-  `${count} / ${TOTAL_CARDS} completed`;
+const completedCount = completedCards.length;
+progressText.textContent = `${completedCount} / ${TOTAL_CARDS}`;
 
-// Optional completion message
-if (count === TOTAL_CARDS) {
-  document.querySelector("h1").innerText = "✈️ Mission Complete!";
-}
+progressBar.style.width = `${(completedCount / TOTAL_CARDS) * 100}%`;
