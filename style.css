@@ -1,3 +1,29 @@
+/* Departure board header */
+.departure-board {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 72px;
+  background: #0b0b0b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+}
+
+.departure-text {
+  font-family: "Courier New", monospace;
+  font-size: 32px;
+  letter-spacing: 0.25em;
+  color: #ffcc33;
+  text-shadow:
+    0 0 6px rgba(255, 204, 51, 0.6),
+    0 0 12px rgba(255, 204, 51, 0.4);
+}
+
+
 * {
   box-sizing: border-box;
   font-family: system-ui, sans-serif;
