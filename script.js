@@ -1,9 +1,10 @@
 const TOTAL_CARDS = 30;
 
-// Get completed cards from localStorage
-let completedCards = JSON.parse(localStorage.getItem("completedCards")) || [];
+// Load progress
+let completedCards =
+  JSON.parse(localStorage.getItem("completedCards")) || [];
 
-// Read card number from URL
+// Read card number from QR
 const params = new URLSearchParams(window.location.search);
 const cardNumber = params.get("card");
 
@@ -13,10 +14,17 @@ if (cardNumber && !completedCards.includes(cardNumber)) {
 }
 
 // Update UI
-const progressText = document.getElementById("progress-text");
-const progressBar = document.getElementById("progress-bar");
-
 const completedCount = completedCards.length;
-progressText.textContent = `${completedCount} / ${TOTAL_CARDS}`;
+const percent = (completedCount / TOTAL_CARDS) * 100;
 
-progressBar.style.width = `${(completedCount / TOTAL_CARDS) * 100}%`;
+document.getElementById("progress-bar").style.width = percent + "%";
+document.getElementById("plane").style.left = `calc(${percent}% - 10px)`;
+
+document.getElementById(
+  "progress-text"
+).textContent = `Cards completed: ${completedCount} / ${TOTAL_CARDS}`;
+
+// Achievement message
+if (completedCount >= 5) {
+  document.getElementById("achievement").classList.remove("hidden");
+}
