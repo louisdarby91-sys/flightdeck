@@ -1,31 +1,28 @@
-
 const TOTAL_CARDS = 30;
-
-// Get card number from URL
-const params = new URLSearchParams(window.location.search);
-const cardNumber = parseInt(params.get("card"));
 
 // Load completed cards
 let completed = JSON.parse(localStorage.getItem("completedCards")) || [];
 
-// Validate card number
-if (!cardNumber || cardNumber < 1 || cardNumber > TOTAL_CARDS) {
-  document.getElementById("message").innerText =
-    "Invalid card. Please scan a valid card.";
-} else {
-  if (!completed.includes(cardNumber)) {
-    completed.push(cardNumber);
+// Check if this visit includes a card scan
+const params = new URLSearchParams(window.location.search);
+const card = parseInt(params.get("card"));
+
+if (card && card >= 1 && card <= TOTAL_CARDS) {
+  if (!completed.includes(card)) {
+    completed.push(card);
     localStorage.setItem("completedCards", JSON.stringify(completed));
   }
-
-  document.getElementById("message").innerText =
-    completed.length === TOTAL_CARDS
-      ? "🎉 You’ve completed all 30 cards!"
-      : `Card ${cardNumber} completed. Keep going!`;
 }
 
-// Update progress
-const progress = Math.min(completed.length / TOTAL_CARDS * 100, 100);
-document.getElementById("progress-bar").style.width = `${progress}%`;
+// Update progress UI
+const count = completed.length;
+const percent = Math.min((count / TOTAL_CARDS) * 100, 100);
+
+document.getElementById("progress-bar").style.width = percent + "%";
 document.getElementById("progress-text").innerText =
-  `${completed.length} / ${TOTAL_CARDS} cards completed`;
+  `${count} / ${TOTAL_CARDS} completed`;
+
+// Optional completion message
+if (count === TOTAL_CARDS) {
+  document.querySelector("h1").innerText = "✈️ Mission Complete!";
+}
