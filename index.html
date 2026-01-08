@@ -1,35 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
-  
 <head>
   <meta charset="UTF-8" />
-  <title>Question Cards</title>
+  <title>Flight Deck Hangar</title>
   <link rel="stylesheet" href="style.css" />
 </head>
+<body>
 
-  <body>
+  <div class="overlay">
+    <div class="card">
 
-  <div class="container">
-    <h1>Welcome to Flight Deck</h1>
+      <h1>Flight Deck Hangar</h1>
+      <h2>Welcome Back</h2>
 
+      <div class="progress-wrapper">
+        <div class="runway">
+          <div id="progress-bar"></div>
+          <div id="plane">✈️</div>
+        </div>
+      </div>
 
-<div class="progress-container">
-  <div id="progress-bar"></div>
-</div>
+      <p id="progress-text">Cards completed: 0 / 30</p>
 
-<p id="progress-text">0 / 30</p>
-    
-    <!-- Plane animation -->
-    <div class="sky">
-      <div class="plane"></div>
-      <div class="trail"></div>
+      <p id="achievement" class="hidden">
+        🎉 Well done — you are now a Flight Deck Frequent Flyer
+      </p>
+
     </div>
-
-    <!-- Progress -->
-    <div class="progress">
-      <div id="progress-bar"></div>
-    </div>
-    <p id="progress-text">0 / 30 completed</p>
   </div>
 
   <script src="script.js"></script>
