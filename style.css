@@ -44,6 +44,26 @@ body {
   opacity: 0.9;
 }
 
+.plane-svg {
+  width: 160px;
+  height: 160px;
+  opacity: 0.95;
+  animation: planeIdle 4s ease-in-out infinite;
+}
+
+@keyframes planeIdle {
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(2deg);
+  }
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+}
+
+
 /* PROGRESS */
 .progress-section {
   padding: 40px 20px;
