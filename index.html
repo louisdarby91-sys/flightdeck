@@ -2,37 +2,45 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Flight Deck Hangar</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div class="departure-board">
-  <div class="departure-text">
-    FLIGHT&nbsp;DECK&nbsp;HANGAR
-  </div>
-</div>
-  
-  <div class="overlay">
-    <div class="card">
+  <!-- TOP BAR -->
+  <header class="top-bar">
+    WELCOME TO THE FLIGHT DECK HANGAR
+  </header>
 
-      <h1>Flight Deck Hangar</h1>
-      <h2>Welcome Back</h2>
+  <!-- HERO IMAGE STRIP -->
+  <section class="hero-strip">
+    <img src="80557.jpg" alt="Background contour map">
+    <div class="hero-plane">✈️</div>
+  </section>
 
-      <div class="progress-wrapper">
-        <div class="runway">
-          <div id="progress-bar"></div>
-          <div id="plane">✈️</div>
-        </div>
-      </div>
+  <!-- PROGRESS -->
+  <section class="progress-section">
+    <h3>Progress</h3>
 
-      <p id="progress-text">Cards completed: 0 / 5</p>
-
-      <p id="achievement" class="hidden">
-        🎉 Well done — you are now a Flight Deck Frequent Flyer
-      </p>
-
+    <div class="progress-bar">
+      <div id="progress-fill"></div>
     </div>
+
+    <p id="progress-text">Cards completed 0 / 30</p>
+  </section>
+
+  <!-- ACHIEVEMENT -->
+  <section class="achievement" id="achievement">
+    <strong>Great job!</strong><br><br>
+    Complete all 10 cards to become a<br>
+    <strong>Flight Deck Frequent Flyer.</strong>
+  </section>
+
+  <!-- RUNWAY -->
+  <div class="runway">
+    <div class="trail"></div>
+    <div class="plane">✈️</div>
   </div>
 
   <script src="script.js"></script>
